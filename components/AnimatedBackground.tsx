@@ -8,19 +8,18 @@ const ParticlesBg = dynamic(() => import("particles-bg"), { ssr: false });
 const AnimatedBackground = () => {
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (!("theme" in localStorage)) {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          setTheme("dark");
-        } else {
-          setTheme("light");
-        }
-      } else {
-        setTheme(localStorage.theme);
-      }
-    }
-  }, [setTheme]);
+  // useEffect(() => {
+  //   if (!("theme" in localStorage)) {
+  //     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //       setTheme("dark");
+  //     } else {
+  //       setTheme("light");
+  //     }
+  //   } else {
+  //     setTheme(localStorage.theme);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [localStorage.theme]);
 
   return (
     <div className={theme}>
