@@ -9,17 +9,18 @@ const AnimatedBackground = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    if (!("theme" in localStorage)) {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setTheme("dark");
+    if (typeof window !== "undefined") {
+      if (!("theme" in localStorage)) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
       } else {
-        setTheme("light");
+        setTheme(localStorage.theme);
       }
-    } else {
-      setTheme(localStorage.theme);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorage.theme]);
+  }, [setTheme]);
 
   return (
     <div className={theme}>
