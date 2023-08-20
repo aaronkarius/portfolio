@@ -1,25 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 
 const ParticlesBg = dynamic(() => import("particles-bg"), { ssr: false });
 
 const AnimatedBackground = () => {
-  const { theme, setTheme } = useTheme();
-
-  // useEffect(() => {
-  //   if (!("theme" in localStorage)) {
-  //     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-  //       setTheme("dark");
-  //     } else {
-  //       setTheme("light");
-  //     }
-  //   } else {
-  //     setTheme(localStorage.theme);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [localStorage.theme]);
+  const { theme } = useTheme();
 
   return (
     <div className={theme}>
